@@ -43,8 +43,11 @@ function twoSum(nums: number[], target: number): number[] {
   nums.forEach((item, index) => {
       if(result.length) return
       if(nums.includes(target - item)) {
-          var findCurIndex = nums.findIndex(arg => arg === (target - item))
+        var findCurIndex = nums.findIndex(arg => arg === (target - item))
+        console.log('index', index, 'findCurIndex', findCurIndex)
+        if (index !== findCurIndex) {
           result.push(index, findCurIndex)
+        }
       }
       
       
