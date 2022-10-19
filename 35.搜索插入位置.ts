@@ -12,27 +12,61 @@ function searchInsert(nums: number[], target: number): number {
   // return nums.includes(target) ? nums.indexOf(target) : res
 
 
-  var res = 0  
+  // for循环，效率低
+  // var res = 0
+  // for(var i = 0; i <= nums.length; i++) {
+  //   // console.log('---', i)
+  //   if(nums[i] === target) {
+  //       res = i
+  //       break
+  //   }
 
-  for(var i = 0; i <= nums.length; i++) {
+  //   if(nums[i] > target) {
+  //       res = i
+  //       break
+  //   }
+  //   res = nums.length
+  // }
+  // return res
 
-    console.log('---', i)
+  // if(nums.length === 0) return -1
 
-    if(nums[i] === target) {
-        res = i
-        break
+  // var lowIndex = 0
+  // var height = nums.length - 1
+  // while (lowIndex <= height) {
+  //   var midIndex = Math.floor((lowIndex + height) / 2)
+  //   console.log('midIndex', midIndex)
+    
+    
+  //   if (target >= nums[midIndex]) {
+  //     if (nums[midIndex + 1] > target || midIndex === nums.length-1) {
+  //       return midIndex+1
+  //     } 
+  //     // 否则低位下标为中位下标加1
+  //     lowIndex = midIndex + 1
+  //   } else {
+  //     height = midIndex - 1
+  //   }
+
+  // }
+  // return -1
+
+
+
+    let left = 0;
+    let right = nums.length - 1;
+    let mid = 0
+    while (left <= right) {
+      mid = Math.floor((right - left)/2 + left);
+      if (nums[mid] === target) {
+          return mid;
+      } else if (nums[mid] < target) {
+          left = mid + 1;
+      } else {
+          right = mid - 1;
+      }
     }
-
-
-    if(nums[i] > target) {
-        res = i
-        break
-    }
-
-    res = nums.length
-  }
-
-  return res
+    return left;
 
 };
 // @lc code=end
